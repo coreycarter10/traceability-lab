@@ -22,9 +22,10 @@ app.get('/', (req, res) => {
     try {
         doesNotExist()
     } catch (error) {
-        console.error(error)
+        rollbar.error('Something did not work');
+    } finally {
+        res.status(200).send(error);
     }
-    res.status(200).send()
 })
 
 app.use(rollbar.errorHandler());
