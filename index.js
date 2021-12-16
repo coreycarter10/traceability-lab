@@ -4,7 +4,7 @@ const path = require('path');
 // include and initialize the rollbar library with your access token
 const Rollbar = require('rollbar')
 const rollbar = new Rollbar({
-  accessToken: '29e6ac8e72234a3ca4c9ae942316115a',
+  accessToken: '6a46d169d32b4ee8bad5e7b8341c1cb3',
   captureUncaught: true,
   captureUnhandledRejections: true,
 })
