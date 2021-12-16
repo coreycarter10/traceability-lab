@@ -18,14 +18,15 @@ app.get('/', (req, res) => {
     rollbar.info('HTML file served successfully.')
 })
 
-app.get('/', (req, res) => {
-    try {
-        doesNotExist()
-    } catch (error) {
-        rollbar.error('Something did not work');
-    } finally {
-        res.status(200).send(error);
-    }
+app.post('/api/student', (req, res) => {
+    let {name} = req.body;
+    name = name.trim();
+
+    students.push(name);
+
+    rollbar.critical('Student added successfully', {author: 'Corey', type: 'manual'});
+
+    res.status(200).send(students);
 })
 
 app.use(rollbar.errorHandler());
